@@ -6,6 +6,8 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 
+#include <xnnpack/common.h>
+
 #include <gtest/gtest.h>
 
 #include "convolution-operator-tester.h"
@@ -3606,6 +3608,19 @@ TEST(CONVOLUTION_NHWC_F32, 1x1) {
     .iterations(3)
     .TestNHWCxF32();
 }
+
+#if XNN_PLATFORM_JIT
+TEST(JIT_CONVOLUTION_NHWC_F32, 1x1) {
+  ConvolutionOperatorTester()
+    .input_size(27, 29)
+    .kernel_size(1, 1)
+    .group_input_channels(23)
+    .group_output_channels(19)
+    .iterations(3)
+    .use_cache(true)
+    .TestNHWCxF32();
+}
+#endif  // XNN_PLATFORM_JIT
 
 TEST(CONVOLUTION_NHWC_F32, 1x1_with_qmin) {
   ConvolutionOperatorTester()
