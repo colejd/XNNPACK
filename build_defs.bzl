@@ -170,7 +170,6 @@ def xnnpack_cc_library(
             ":ios_arm64": aarch64_srcs,
             ":ios_sim_arm64": aarch64_srcs,
             ":ios_arm64e": aarch64_srcs,
-            ":ios_sim_arm64": aarch64_srcs,
             ":ios_x86": x86_srcs,
             ":ios_x86_64": x86_srcs,
             ":watchos_armv7k": aarch32_srcs,
